@@ -5,15 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Client extends Model
+class Compteur extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nom', 'adresse', 'telephone'];
+    protected $fillable = ['client_id', 'numero'];
 
-    public function compteur()
+    public function client()
     {
-        return $this->hasOne(Compteur::class);
+        return $this->belongsTo(Client::class);
+    }
+
+    public function releves()
+    {
+        return $this->hasMany(Releve::class);
     }
 
     public function factures()

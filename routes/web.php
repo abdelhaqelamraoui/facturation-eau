@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\FactureController;
+use App\Http\Controllers\ReleveController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +21,5 @@ Route::get('/', function () {
 });
 
 Route::resource('clients', ClientController::class);
+Route::resource('factures', FactureController::class);
+Route::resource('releves', ReleveController::class)->parameter('releves', 'releve');

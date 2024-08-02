@@ -30,6 +30,7 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         Client::create($request->all());
+        return redirect()->back()->with('message', 'تمت الإضافة بنجاح');
     }
 
     /**
@@ -54,6 +55,7 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         $client->update($request->all());
+        return redirect()->back()->with('message', 'تم التعديل بنجاح');
     }
 
     /**
@@ -61,6 +63,7 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
+        return redirect()->route('clients.index')->with('message', 'تم التعديل بنجاح');
     }
 }
