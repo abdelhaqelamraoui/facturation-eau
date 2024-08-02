@@ -19,3 +19,11 @@ Route::get('/', function () {
 });
 
 Route::resource('clients', ClientController::class);
+
+route::get('/show', function(){
+    return view('clients.show');
+});
+
+route::get('/edit', function(){
+    return view('clients.edit');
+});
