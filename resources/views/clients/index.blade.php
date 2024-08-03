@@ -35,11 +35,7 @@
                                                 <circle cx="5" cy="12" r="1"></circle>
                                             </svg>
                                         </a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#">إجراء</a>
-                                            <a class="dropdown-item" href="#">إجراء آخر</a>
-                                            <a class="dropdown-item" href="#">شيء آخر هنا</a>
-                                        </div>
+                                      
                                     </div>
                                 </div>
                                 <h5 class="card-title mb-0">العملاء</h5>
@@ -57,20 +53,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @for ($i = 1; $i <= 20; $i++)
-                                            <tr>
+                                        @foreach ($clients as $client)
+                                            <tr data-id="{{ $client->id }}">
                                                 <td>
-                                                    <a href="{{ url('/show') }}">
-                                                        <img src="https://bootdey.com/img/Content/avatar/avatar{{ ($i % 5) + 1 }}.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar">
+                                                    <a href="{{ route('clients.show', $client->id) }}" class="client-link">
+                                                        <img src="https://bootdey.com/img/Content/avatar/avatar{{ ($loop->index % 5) + 1 }}.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar">
                                                     </a>
                                                 </td>
-                                                <td>عميل {{ $i }}</td>
-                                                <td>{{ str_pad($i, 9, '0', STR_PAD_LEFT) }}</td>
-                                                <td>{{ 10000 + $i }}</td>
-                                                <td>{{ $i }}</td>
-                                                <td><span class="badge bg-{{ ['success', 'warning', 'danger'][($i % 3)] }}"> {{ ['نشط', 'غير نشط', 'محذوف'][($i % 3)] }} </span></td>
+                                                <td>{{ $client->name }}</td>
+                                                <td>{{ $client->cin }}</td>
+                                                <td>{{ $client->reference }}</td>
+                                                <td>{{ $client->meter }}</td>
+                                                <td><span class="badge bg-{{ ['success', 'warning', 'danger'][$loop->index % 3] }}">{{ ['نشط', 'غير نشط', 'محذوف'][$loop->index % 3] }}</span></td>
                                             </tr>
-                                        @endfor
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -79,49 +75,43 @@
                     <div class="col-xl-4">
                         <div class="card">
                             <div class="card-header">
-                                <div class="card-actions float-right">
-                                    <div class="dropdown show">
-
-                                    </div>
-                                </div>
                                 <h5 class="card-title mb-0">معلومات العميل</h5>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" id="client-info">
                                 <div class="row g-0">
                                     <div class="col-sm-3 col-xl-12 col-xxl-3 text-center">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar3.png" width="64" height="64" class="rounded-circle mt-2" alt="Client Avatar">
+                                        <img src="" width="64" height="64" class="rounded-circle mt-2" alt="Client Avatar" id="client-avatar">
                                     </div>
                                     <div class="col-sm-9 col-xl-12 col-xxl-9">
                                         <table class="table table-sm mt-2 mb-4">
                                             <tbody>
                                                 <tr>
                                                     <th>الاسم</th>
-                                                    <td>Angelica Ramos</td>
+                                                    <td id="client-name"></td>
                                                 </tr>
                                                 <tr>
                                                     <th>رقم الهوية</th>
-                                                    <td>123456789</td>
+                                                    <td id="client-cin"></td>
                                                 </tr>
                                                 <tr>
                                                     <th>الرقم المرجعي</th>
-                                                    <td>12345</td>
+                                                    <td id="client-ref"></td>
                                                 </tr>
                                                 <tr>
                                                     <th>العداد</th>
-                                                    <td>1</td>
+                                                    <td id="client-meter"></td>
                                                 </tr>
                                                 <tr>
                                                     <th>الحالة</th>
-                                                    <td><span class="badge bg-success">نشط</span></td>
+                                                    <td id="client-status"><span class="badge"></span></td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                                 <strong>Activity</strong>
-                                <ul class="timeline mt-2 mb-0">
+                                <ul class="timeline mt-2 mb-0" id="client-activity">
                                     <li class="timeline-item">
-
                                         <p>Nam pretium turpis et arcu. Duis arcu tortor, suscipit...</p>
                                     </li>
                                     <!-- Add more activities here -->
@@ -134,4 +124,34 @@
         </div>
     </main>
 </div>
+@endsection
+
+@section('scripts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.client-link').on('click', function(e) {
+            e.preventDefault();
+            var clientId = $(this).closest('tr').data('id');
+
+            // Fetch client data via AJAX
+            $.ajax({
+                url: '/clients/' + clientId,  // Adjust the URL as needed
+                method: 'GET',
+                success: function(data) {
+                    // Update the client information section with the fetched data
+                    $('#client-avatar').attr('src', 'https://bootdey.com/img/Content/avatar/avatar' + ((clientId % 5) + 1) + '.png');
+                    $('#client-name').text(data.name);
+                    $('#client-cin').text(data.cin);
+                    $('#client-ref').text(data.reference);
+                    $('#client-meter').text(data.meter);
+                    $('#client-status span').attr('class', 'badge bg-' + data.status_class).text(data.status_text);
+
+                    // Update the client activity section if necessary
+                    // $('#client-activity').html(data.activity_html);
+                }
+            });
+        });
+    });
+</script>
 @endsection
