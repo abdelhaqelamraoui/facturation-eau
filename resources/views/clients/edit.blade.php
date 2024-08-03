@@ -5,13 +5,7 @@
 @section('content')
 
 <div class="container-xl px-4 mt-4">
-    <!-- تنقل صفحة الحساب -->
-    {{-- <nav class="nav nav-borders">
-        <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">الملف الشخصي</a>
-        <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-billing-page" target="__blank">الفوترة</a>
-        <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-security-page" target="__blank">الأمان</a>
-        <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-edit-notifications-page" target="__blank">الإشعارات</a> --}}
-    </nav>
+
     <hr class="mt-0 mb-4">
     <div class="row">
         <div class="col-xl-4">
