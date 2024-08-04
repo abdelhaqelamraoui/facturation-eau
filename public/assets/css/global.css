@@ -17,8 +17,16 @@ body * {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-/*
-{
+
+* {
     direction: rtl;
 }
-*/
+
+canvas,
+canvas * {
+    direction: ltr !important;
+}
+
+.canvasjs-chart-credit {
+    display: none;
+}

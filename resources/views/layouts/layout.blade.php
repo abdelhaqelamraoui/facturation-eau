@@ -66,9 +66,9 @@
             <!-- the header -->
             <header class="header navbar navbar-expand-lg bg-light border-bottom px-4">
                 <div class="container-fluid">
-                    <a class="navbar-brand me-auto" href="#">@yield('subtitle')</a>
+                    <a class="navbar-brand" href="#">@yield('subtitle')</a>
                     <div>
-                        <button class="btn">Smth</button>
+                        <button class="btn">{{ explode(' ', now())[0]}}</button>
                     </div>
                 </div>
             </header>
