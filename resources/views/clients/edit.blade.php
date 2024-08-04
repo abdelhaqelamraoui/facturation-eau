@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('subtitle','')
+@section('subtitle','تعديل زبون')
 
 
 @section('content')

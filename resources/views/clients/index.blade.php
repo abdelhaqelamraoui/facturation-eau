@@ -1,13 +1,13 @@
 @extends('layouts.layout')
-@section('subtitle', 'Patients')
+@section('subtitle', 'الزبناء')
 
 @section('content')
 
 <div class="d-flex flex-column justify-content-between h-100">
     <header class="d-flex align-items-center justify-content-between">
-        <a href="{{ route('patients.create') }}" class="btn btn-primary px-3">Nouveau</a>
+        <a href="{{ route('clients.create') }}" class="btn btn-primary px-3">Nouveau</a>
 
-        <form action="{{ route('patients.index') }}" class="input-group w-50" method="GET">
+        <form action="{{ route('clients.index') }}" class="input-group w-50" method="GET">
 
             <select name="search-filter" class="input-group-text">
                 <option class="text-start" value="cin">CIN</option>

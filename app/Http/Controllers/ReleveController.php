@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Compteur;
 use App\Models\Releve;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,9 @@ class ReleveController extends Controller
      */
     public function index()
     {
-        //
+        $releves = Releve::all();
+        // TODO : inclure les client et les compteurs
+        return view('releves.index', compact('releves'));
     }
 
     /**
@@ -20,7 +23,8 @@ class ReleveController extends Controller
      */
     public function create()
     {
-        //
+        // TODO : doit être dans la même interfce que la liste des releves
+        return view('releves.create');
     }
 
     /**
@@ -28,7 +32,11 @@ class ReleveController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $compteur = Compteur::findOrFail($request->only('numero'));
+        $client = $compteur->client()->get();
+
+        $compteur->releves()->create($request->except('numero'));
+        return redirect()->back()->with('success', "$client->nom $client->prenom");
     }
 
     /**
@@ -36,7 +44,7 @@ class ReleveController extends Controller
      */
     public function show(Releve $releve)
     {
-        //
+        return view('releves.show', compact('releve'));
     }
 
     /**
@@ -44,7 +52,7 @@ class ReleveController extends Controller
      */
     public function edit(Releve $releve)
     {
-        //
+        return view('releves.edit', compact('releve'));
     }
 
     /**
@@ -52,7 +60,8 @@ class ReleveController extends Controller
      */
     public function update(Request $request, Releve $releve)
     {
-        //
+        $releve->update($request->all());
+        return redirect()->back()->with('success', 'Releve ifié');
     }
 
     /**
@@ -60,6 +69,7 @@ class ReleveController extends Controller
      */
     public function destroy(Releve $releve)
     {
-        //
+        $releve->delete();
+        return redirect()->back()->with('success', 'Releve supprimé');
     }
 }

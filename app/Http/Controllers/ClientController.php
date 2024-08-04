@@ -29,8 +29,9 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $client = Client::create($request->input('client')); // a fieldset table, ex: name="client[nom]"
-        $client->compteur()->create($request->input('compteur')); // a fieldset table, ex: name="compteur[numero]"
+        $client = Client::create($request->input('client'));
+        $compteur = $client->compteur()->create($request->input('compteur'));
+        $compteur->releves()->create($request->input('releve'));
 
         return redirect()->back()->with('message', 'تمت الإضافة بنجاح');
     }

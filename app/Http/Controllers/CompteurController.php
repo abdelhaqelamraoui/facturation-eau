@@ -12,7 +12,8 @@ class CompteurController extends Controller
      */
     public function index()
     {
-        //
+        $compteurs = Compteur::all();
+        return view('compteur.index', compact('compteurs'));
     }
 
     /**
