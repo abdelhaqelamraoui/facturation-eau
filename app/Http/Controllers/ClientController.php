@@ -29,7 +29,9 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        Client::create($request->all());
+        $client = Client::create($request->input('client')); // a fieldset table, ex: name="client[nom]"
+        $client->compteur()->create($request->input('compteur')); // a fieldset table, ex: name="compteur[numero]"
+
         return redirect()->back()->with('message', 'تمت الإضافة بنجاح');
     }
 
@@ -54,7 +56,9 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        $client->update($request->all());
+        $client->update($request->input('client'));
+        $client->compteur()->update($request->input('compteur'));
+
         return redirect()->back()->with('message', 'تم التعديل بنجاح');
     }
 
@@ -64,6 +68,6 @@ class ClientController extends Controller
     public function destroy(Client $client)
     {
         $client->delete();
-        return redirect()->route('clients.index')->with('message', 'تم التعديل بنجاح');
+        return redirect()->route('clients.index')->with('message', 'تم الحذف بنجاح');
     }
 }

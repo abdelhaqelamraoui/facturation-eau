@@ -17,3 +17,8 @@ body * {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+/*
+{
+    direction: rtl;
+}
+*/

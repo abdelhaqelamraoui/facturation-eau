@@ -28,10 +28,33 @@
                         <svg class="bi pe-none me-2" width="16" height="16">
                             <use xlink:href="#home" />
                         </svg>
-                        Clients
+                        الزبناء
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">
+                        <svg class="bi pe-none me-2" width="16" height="16">
+                            <use xlink:href="#home" />
+                        </svg>
+                        الفواتير
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">
+                        <svg class="bi pe-none me-2" width="16" height="16">
+                            <use xlink:href="#home" />
+                        </svg>
+                        الكشوفات
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" aria-current="page">
+                        <svg class="bi pe-none me-2" width="16" height="16">
+                            <use xlink:href="#home" />
+                        </svg>
+                        إحصائيات
+                    </a>
+                </li>
             </ul>
             <hr>
             <div class="ps-3">
@@ -59,7 +82,6 @@
         </div>
 
     </div>
-    <!-- the sidebar -->
 </body>
 
 </html>
