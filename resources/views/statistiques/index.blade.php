@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('subtitle', 'لوحة التحكم')
+@section('subtitle', 'إحصائيات عامة')
 
 @section('content')
 
@@ -20,10 +20,9 @@
     </header>
 
     <main class="d-flex flex-column justify-content-between h-100 flex-grow-1">
-        <!-- TODO -->
+    <!-- TODO -->
 
     </main>
-
 </div>
 
 @endsection

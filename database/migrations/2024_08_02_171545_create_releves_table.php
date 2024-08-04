@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('releves', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Compteur::class);
-            $table->date('date');
+            $table->date('date')->default(now());
             $table->integer('valeur');
             $table->timestamps();
         });

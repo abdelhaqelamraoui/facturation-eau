@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\FactureController;
 use App\Http\Controllers\ReleveController;
+use App\Http\Controllers\StatistiquesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +24,12 @@ Route::get('/', function () {
 Route::resource('clients', ClientController::class);
 Route::resource('factures', FactureController::class);
 Route::resource('releves', ReleveController::class)->parameter('releves', 'releve');
+
+Route::prefix('statistiques')
+    ->name('statistiques.')
+    ->controller(StatistiquesController::class)
+    ->group(function () {
+
+        Route::get('/', 'index')->name('index');
+        Route::get('/{client}', 'show')->name('show');
+    });

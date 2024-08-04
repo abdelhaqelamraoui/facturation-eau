@@ -12,23 +12,9 @@ class FactureController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        // TODO : lister tous les facture dans une table
+        $factures = Facture::all();
+        return view('factures.index', compact('factures'));
     }
 
     /**
@@ -36,30 +22,15 @@ class FactureController extends Controller
      */
     public function show(Facture $facture)
     {
-        //
+        // TODO: afficher une facture avec une format imprimable
+        return view('factures.show', compact('facture'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Print an invoice
      */
-    public function edit(Facture $facture)
+    public function print(Facture $facture)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Facture $facture)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Facture $facture)
-    {
-        //
+        // TODO: imprimer une facture
     }
 }
