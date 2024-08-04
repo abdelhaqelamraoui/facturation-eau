@@ -24,11 +24,11 @@ class DatabaseSeeder extends Seeder
 
                 Compteur::factory()
                     ->count(1)
-                    ->has(Releve::factory(random_int(1, 100)))
+                    ->has(Releve::factory()->count(random_int(1, 100)))
                     ->create(['client_id' => $client->id])
                     ->each(function ($compteur) use ($client) {
                         Facture::factory()
-                            ->count(1)
+                            ->count(random_int(1, 100))
                             ->create(['compteur_id' => $compteur->id, 'client_id' => $client->id]);
                     });
             });
