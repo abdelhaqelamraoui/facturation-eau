@@ -56,7 +56,7 @@
                                                     <img src="https://bootdey.com/img/Content/avatar/avatar{{ ($loop->index % 5) + 1 }}.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar">
                                                 </a>
                                             </td>
-                                            <td>{{ $client->name }}</td>
+                                            <td>{{ $client->nom }}</td>
                                             <td>{{ $client->cin }}</td>
                                             <td>{{ $client->reference }}</td>
                                             <td>{{ $client->meter }}</td>

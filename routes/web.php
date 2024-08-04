@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('dashboard.index');
 });
-
+// Resource route for clients, factures, and releves
 Route::resource('clients', ClientController::class);
 Route::resource('factures', FactureController::class);
 Route::resource('releves', ReleveController::class)->parameter('releves', 'releve');

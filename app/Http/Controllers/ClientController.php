@@ -35,6 +35,7 @@ class ClientController extends Controller
         return redirect()->back()->with('message', 'تمت الإضافة بنجاح');
     }
 
+
     /**
      * Display the specified resource.
      */
@@ -43,24 +44,21 @@ class ClientController extends Controller
     //     return view('clients.show', compact('client'));
     // }
     // In your Controller
-public function show(Request $request)
+    public function show($id)
 {
-    $clientId = $request->id;
+    $client = Client::find($id);
 
-    // Fetch client data based on the provided ID
-    $client = Client::find($clientId);
+    // Debugging output
+    // dd($client);
 
-    // Return JSON response
-    return response()->json([
-        'name' => $client->name,
-        'cin' => $client->cin,
-        'reference' => $client->reference,
-        'meter' => $client->meter,
-        'status_class' => $client->status_class, // success, warning, danger
-        'status_text' => $client->status_text,  // نشط, غير نشط, محذوف
-        // 'activity_html' => $client->activity_html, // Add this if you need to update activities dynamically
-    ]);
+    if ($client) {
+        return view('clients.show', ['client' => $client]);
+    } else {
+        return abort(404, 'Client not found');
+    }
 }
+
+
 
 
     /**
