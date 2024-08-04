@@ -43,9 +43,8 @@
                                         <th>#</th>
                                         <th>الاسم</th>
                                         <th>رقم الهوية</th>
-                                        <th>الرقم المرجعي</th>
-                                        <th>العداد</th>
-                                        <th>الاداء الشهري</th>
+                                        <th> العنوان</th>
+                                        <th>الإجراءات</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -56,11 +55,19 @@
                                                     <img src="https://bootdey.com/img/Content/avatar/avatar{{ ($loop->index % 5) + 1 }}.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar">
                                                 </a>
                                             </td>
-                                            <td>{{ $client->nom }}</td>
+                                            <td>{{ $client->nom }} {{ $client->prenom }}</td>
                                             <td>{{ $client->cin }}</td>
-                                            <td>{{ $client->reference }}</td>
-                                            <td>{{ $client->meter }}</td>
-                                            <td><span class="badge bg-{{ ['success', 'warning', 'danger'][$loop->index % 3] }}">{{ ['نشط', 'غير نشط', 'محذوف'][$loop->index % 3] }}</span></td>
+                                            <td style="width: 20%;">{{ $client->adresse }}</td>
+                                            {{-- <td>{{ $client->meter }}</td> --}}
+                                            <td>
+                                                <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-warning btn-sm">تعديل</a>
+
+                                                <form action="{{ route('clients.destroy', $client->id) }}" method="POST" style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('هل أنت متأكد أنك تريد حذف هذا العميل؟');">حذف</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

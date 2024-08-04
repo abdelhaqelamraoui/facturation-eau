@@ -29,6 +29,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->input('client'));
         $client = Client::create($request->input('client')); // a fieldset table, ex: name="client[nom]"
         $client->compteur()->create($request->input('compteur')); // a fieldset table, ex: name="compteur[numero]"
 
@@ -75,7 +76,7 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         $client->update($request->input('client'));
-        $client->compteur()->update($request->input('compteur'));
+        // $client->compteur()->update($request->input('compteur'));
 
         return redirect()->back()->with('message', 'تم التعديل بنجاح');
     }
