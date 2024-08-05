@@ -6,7 +6,7 @@
         <!-- العنوان -->
         <div class="mb-3 text-end">
             <div class="text-end">
-                <h2 class="mb-3">إنشاء عميل جديد</h2>
+                <h2 class="mb-3">إنشاء زبون جديد</h2>
             </div>
         </div>
 
@@ -41,11 +41,11 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3 text-end">
-                                        <label class="form-label text-end">رقم الهوية</label>
+                                        <label class="form-label text-end">رقم البطاقة الوطنية</label>
                                         <input type="text" name="client[cin]" class="form-control text-end" required>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-6 ">
                                     <div class="mb-3 text-end">
                                         <label class="form-label text-end">العنوان</label>
                                         <input type="text" name="client[adresse]" class="form-control text-end" required>
@@ -60,6 +60,12 @@
                         <div class="card-body">
                             <h3 class="h6 mb-4 text-end">معلومات العداد</h3>
                             <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-3 mb-3 text-end ">
+                                        <label class="form-label text-end">قيمة العداد</label>
+                                        <input type="number" name="compteur[value]" class="form-control text-end" required>
+                                    </div>
+                                </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3 text-end">
                                         <label class="form-label text-end">رقم العداد</label>

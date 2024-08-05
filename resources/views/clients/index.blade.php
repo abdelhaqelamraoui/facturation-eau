@@ -3,7 +3,7 @@
 @section('content')
 <div class="" dir="rtl">
     <header class="d-flex align-items-center justify-content-between mb-3">
-        <a href="{{ route('clients.create') }}" class="btn btn-primary px-3">جديد</a>
+        <a href="{{ route('clients.create') }}" class="btn btn-primary px-3">اضافة زبون</a>
 
         <form action="" class="input-group w-50" method="GET">
             <select name="search-filter" class="input-group-text">
@@ -42,31 +42,37 @@
                                     <tr>
                                         <th>#</th>
                                         <th>الاسم</th>
-                                        <th>رقم الهوية</th>
+                                        <th>رقم البطاقة الوطنية</th>
                                         <th> العنوان</th>
                                         <th>الإجراءات</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                  @php
+                                      $counter = 1;
+
+                                  @endphp
                                     @foreach ($clients as $client)
                                         <tr data-id="{{ $client->id }}">
                                             <td>
-                                                <a href="{{ route('clients.show', $client->id) }}" class="client-link">
-                                                    <img src="https://bootdey.com/img/Content/avatar/avatar{{ ($loop->index % 5) + 1 }}.png" width="32" height="32" class="rounded-circle my-n1" alt="Avatar">
-                                                </a>
+                                                @php
+                                                echo  $counter ;
+                                                $counter++;           @endphp
                                             </td>
                                             <td>{{ $client->nom }} {{ $client->prenom }}</td>
                                             <td>{{ $client->cin }}</td>
                                             <td style="width: 20%;">{{ $client->adresse }}</td>
                                             {{-- <td>{{ $client->meter }}</td> --}}
                                             <td>
-                                                <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-warning btn-sm">تعديل</a>
+                                                <a href="{{ route('clients.show', $client->id) }}" class="btn btn-outline-success btn-sm">تفاصيل</a>
+                                                <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-outline-primary btn-sm">تعديل</a>
 
                                                 <form action="{{ route('clients.destroy', $client->id) }}" method="POST" style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('هل أنت متأكد أنك تريد حذف هذا العميل؟');">حذف</button>
+                                                    <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('هل أنت متأكد أنك تريد حذف هذا العميل؟');">حذف</button>
                                                 </form>
+
                                             </td>
                                         </tr>
                                     @endforeach
