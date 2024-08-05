@@ -29,20 +29,38 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $client = Client::create($request->input('client'));
-        $compteur = $client->compteur()->create($request->input('compteur'));
-        $compteur->releves()->create($request->input('releve'));
+        // dd($request->input('client'));
+        $client = Client::create($request->input('client')); // a fieldset table, ex: name="client[nom]"
+        $client->compteur()->create($request->input('compteur')); // a fieldset table, ex: name="compteur[numero]"
 
         return redirect()->back()->with('message', 'تمت الإضافة بنجاح');
     }
 
+
     /**
      * Display the specified resource.
      */
-    public function show(Client $client)
-    {
-        return view('clients.show', compact('client'));
+    // public function show(Client $client)
+    // {
+    //     return view('clients.show', compact('client'));
+    // }
+    // In your Controller
+    public function show($id)
+{
+    $client = Client::find($id);
+
+    // Debugging output
+    // dd($client);
+
+    if ($client) {
+        return view('clients.show', ['client' => $client]);
+    } else {
+        return abort(404, 'Client not found');
     }
+}
+
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -58,7 +76,7 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         $client->update($request->input('client'));
-        $client->compteur()->update($request->input('compteur'));
+        // $client->compteur()->update($request->input('compteur'));
 
         return redirect()->back()->with('message', 'تم التعديل بنجاح');
     }
