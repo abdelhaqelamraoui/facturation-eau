@@ -6,12 +6,17 @@
         <a href="{{ route('clients.create') }}" class="btn btn-primary px-3">اضافة زبون</a>
 
         <form action="" class="input-group w-50" method="GET">
+        <form action="" class="input-group w-50" method="GET">
             <select name="search-filter" class="input-group-text">
+                <option class="text-start" value="cin">رقم الهوية</option>
+                <option class="text-start" value="nom">الاسم</option>
+                <option class="text-start" value="telephone">الهاتف</option>
                 <option class="text-start" value="cin">رقم الهوية</option>
                 <option class="text-start" value="nom">الاسم</option>
                 <option class="text-start" value="telephone">الهاتف</option>
             </select>
             <input type="search" name="search-value" class="form-control">
+            <button type="submit" class="btn btn-success">بحث</button>
             <button type="submit" class="btn btn-success">بحث</button>
         </form>
     </header>
@@ -86,3 +91,4 @@
     </main>
 </div>
 @endsection
+

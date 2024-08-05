@@ -1,3 +1,4 @@
+
 @extends('layouts.layout')
 @section('subtitle', 'تعديل معلومات العميل')
 
@@ -60,4 +61,6 @@
         </div>
     </div>
 </div>
+
 @endsection
+
