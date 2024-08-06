@@ -1,11 +1,9 @@
 @extends('layouts.layout')
 @section('subtitle', 'الزبناء')
-
 @section('content')
 <div class="" dir="rtl">
     <header class="d-flex align-items-center justify-content-between mb-3">
         <a href="{{ route('clients.create') }}" class="btn btn-primary px-3">اضافة زبون</a>
-
         <form action="" class="input-group w-50" method="GET">
         <form action="" class="input-group w-50" method="GET">
             <select name="search-filter" class="input-group-text">
@@ -18,12 +16,10 @@
             </select>
             <input type="search" name="search-value" class="form-control ">
             <button type="submit" class="btn btn-success m-2">بحث</button>
-
         </form>
     </header>
-
     <main class="">
-        <div class="container-fluid"> 
+        <div class="container-fluid">
             <h1 class="h3 mb-3">لائحة الزبائن</h1>
             <div class="row">
                 <div class="col-xl-12">
@@ -55,7 +51,7 @@
                                             <td>{{ $client->nom }} {{ $client->prenom }}</td>
                                             <td>{{ $client->cin }}</td>
                                             <td style="width: 20%;">{{ $client->adresse }}</td>
-                                            {{-- <td>{{ $client->meter }}</td> --}}
+                                            <td>{{ $client->compteur_id}}</td>
                                             <td>
                                                 <a href="{{ route('clients.show', $client->id) }}" class="btn btn-outline-success btn-sm">تفاصيل</a>
                                                 <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-outline-primary btn-sm">تعديل</a>

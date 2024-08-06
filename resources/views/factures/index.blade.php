@@ -5,7 +5,7 @@
 
 <div class="" dir="rtl">
     <header class="d-flex align-items-center justify-content-between">
-        <a href="#" class="btn btn-primary px-3">Nouveau</a>
+
 
         <form action="{#" class="input-group w-50" method="GET">
 
@@ -28,7 +28,7 @@
             <table class="table table-bordered">
                 <thead class="thead-dark">
                     <tr>
-                        <th>ID</th>
+                        <th>#</th>
                         <th>الاسم</th>
                         <th>رقم العداد</th>
                         <th>تاريخ</th>

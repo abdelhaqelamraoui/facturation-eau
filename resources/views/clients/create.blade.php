@@ -1,25 +1,18 @@
 @extends('layouts.layout')
 @section('subtitle','إضافة زبون')
-
 @section('content')
 <div class="container">
-
     <div class="container-fluid">
         <div class="container">
-            <!-- العنوان -->
             <div class="mb-3 text-end">
                 <div class="text-end">
                     <h2 class="mb-3">إنشاء زبون جديد</h2>
                 </div>
             </div>
-
-            <!-- نموذج المعلومات الأساسية -->
             <form action="{{ route('clients.store') }}" method="POST">
                 @csrf
                 <div class="row">
-                    <!-- الجانب الأيسر -->
                     <div class="col">
-                        <!-- المعلومات الأساسية -->
                         <div class="card mb-4">
                             <div class="card-body">
                                 <h3 class="h6 mb-4 text-end">المعلومات الأساسية</h3>
@@ -57,8 +50,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- معلومات العداد -->
                         <div class="card mb-4">
                             <div class="card-body">
                                 <h3 class="h6 mb-4 text-end">معلومات العداد</h3>
@@ -75,7 +66,6 @@
                                             <input type="number" name="compteur[numero]" class="form-control text-end" required>
                                         </div>
                                     </div>
-                                    <!-- Add other compteur fields here if needed -->
                                 </div>
                             </div>
                         </div>
