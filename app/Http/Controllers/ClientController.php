@@ -36,6 +36,7 @@ class ClientController extends Controller
         return redirect()->back()->with('message', 'تمت الإضافة بنجاح');
     }
 
+
     /**
      * Display the specified resource.
      */
@@ -58,7 +59,7 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         $client->update($request->input('client'));
-        $client->compteur()->update($request->input('compteur'));
+        // $client->compteur()->update($request->input('compteur'));
 
         return redirect()->back()->with('message', 'تم التعديل بنجاح');
     }
