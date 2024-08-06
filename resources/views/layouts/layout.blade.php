@@ -11,7 +11,7 @@
 
 </head>
 
-<body class="user-layout">
+<body class="user-layout" dir="rtl">
     <div class="row h-100 w-100">
         <!-- the sidebar -->
         <div id="sidebarMenu" class="col-2 d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 250px;">

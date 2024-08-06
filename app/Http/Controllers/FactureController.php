@@ -12,8 +12,8 @@ class FactureController extends Controller
      */
     public function index()
     {
-        // TODO : lister tous les facture dans une table
-        $factures = Facture::all();
+        // الحصول على جميع الفواتير مع معلومات الزبون المرتبط بها
+        $factures = Facture::with('client')->get();
         return view('factures.index', compact('factures'));
     }
 

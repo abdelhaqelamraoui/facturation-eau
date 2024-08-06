@@ -33,3 +33,5 @@ Route::prefix('statistiques')
         Route::get('/', 'index')->name('index');
         Route::get('/{client}', 'show')->name('show');
     });
+
+    
