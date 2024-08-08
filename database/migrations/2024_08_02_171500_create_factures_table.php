@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('factures', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Client::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(Client::class);
             $table->foreignIdFor(Compteur::class);
             $table->date('date');
             $table->decimal('montant', 8, 2);

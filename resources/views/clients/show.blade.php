@@ -26,16 +26,11 @@
                                 </div>
 
                                 <table class="table table-bordered mt-4">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">البيان</th>
-                                            <th scope="col">القيمة</th>
-                                        </tr>
-                                    </thead>
+                                   
                                     <tbody>
                                         <tr>
                                             <td>العداد</td>
-                                            <td>{{ $facture->compteur_id }}</td>
+                                            <td>{{ $facture->compteur->numero }}</td>
                                         </tr>
                                         <tr>
                                             <td>رقم البطاقة الوطنية</td>
