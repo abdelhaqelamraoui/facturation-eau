@@ -1,5 +1,4 @@
 <?php
-
 use App\Models\Client;
 use App\Models\Compteur;
 use Illuminate\Database\Migrations\Migration;
@@ -15,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('factures', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Client::class);
+            $table->foreignIdFor(Client::class)->constrained()->onDelete('cascade');
             $table->foreignIdFor(Compteur::class);
             $table->date('date');
             $table->decimal('montant', 8, 2);

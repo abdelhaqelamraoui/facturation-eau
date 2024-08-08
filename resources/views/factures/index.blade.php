@@ -5,10 +5,7 @@
 
 <div class="" dir="rtl">
     <header class="d-flex align-items-center justify-content-between">
-
-
         <form action="{#" class="input-group w-50" method="GET">
-
             <select name="search-filter" class="input-group-text">
                 <option class="text-start" value="cin">CIN</option>
                 <option class="text-start" value="nom">Nom</option>
@@ -24,7 +21,6 @@
                 <h2>قائمة الفواتير</h2>
                 <a href="" class="btn btn-primary">استخراج جميع الفواتير</a>
             </div>
-
             <table class="table table-bordered">
                 <thead class="thead-dark">
                     <tr>
@@ -42,8 +38,8 @@
                     @foreach($factures as $facture)
                     <tr>
                         <td>{{ $facture->id }}</td>
-                        <td>{{ $facture->client ? $facture->client->nom : 'غير موجود' }}</td>
-                        <td>{{ $facture->compteur_id }}</td>
+                        <td>{{ $facture->client->nom}}</td>
+                        <td>{{ $facture->compteur->numero }}</td>
                         <td>{{ $facture->date }}</td>
                         <td>{{ $facture->montant }}</td>
                         <td>{{ $facture->volume }}</td>
@@ -56,10 +52,7 @@
                 </tbody>
             </table>
         </div>
-
     </body>
-
-
 </div>
 
 @endsection

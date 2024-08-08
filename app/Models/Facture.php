@@ -19,8 +19,10 @@ public function client()
 }
 
 
-    public function compteur()
-    {
-        return $this->belongsTo(Compteur::class);
-    }
+public function compteur()
+{
+    return $this->belongsTo(Compteur::class, 'compteur_id');
+}
+
+
 }

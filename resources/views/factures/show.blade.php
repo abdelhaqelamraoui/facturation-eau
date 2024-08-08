@@ -2,8 +2,6 @@
 @section('subtitle','فاتورة')
 
 @section('content')
-
-
         <div class="container">
             <main class="" dir="rtl">
                 <body class="bg-light">

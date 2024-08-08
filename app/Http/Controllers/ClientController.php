@@ -46,18 +46,18 @@ class ClientController extends Controller
     // }
     // In your Controller
     public function show($id)
-{
-    $client = Client::find($id);
+    {
+        $client = Client::find($id);
 
-    // Debugging output
-    // dd($client);
+        if ($client) {
+       
+            $facture = $client->factures()->latest()->first(); // Fetch the latest facture, or adjust as needed
 
-    if ($client) {
-        return view('clients.show', ['client' => $client]);
-    } else {
-        return abort(404, 'Client not found');
+            return view('clients.show', ['client' => $client, 'facture' => $facture]);
+        } else {
+            return abort(404, 'Client not found');
+        }
     }
-}
 
 
 
