@@ -11,18 +11,14 @@
 
 </head>
 
-<body class="user-layout">
+<body class="">
     <div class="row h-100 w-100">
         <!-- the sidebar -->
         <div id="sidebarMenu" class="col-2 d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 250px;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-                <svg class="bi pe-none me-2" width="40" height="32">
-                    <use xlink:href="#bootstrap" />
-                </svg>
-                <span class="fs-5">{{ config('app.name') }}</span>
+                <span class="fs-5 text-center w-100">{{ config('app.name') }}</span>
             </a>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
+            <ul class="nav nav-pills flex-column mb-auto mt-4">
                 <li class="nav-item">
                     <a href="{{route('clients.index')}}" class="nav-link active" aria-current="page">
                         <svg class="bi pe-none me-2" width="16" height="16">

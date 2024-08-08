@@ -12,7 +12,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::all();
+        $clients = Client::all()->sortByDesc('id');
         return view('clients.index', compact('clients'));
     }
 
@@ -59,7 +59,8 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         $client->update($request->input('client'));
-        // $client->compteur()->update($request->input('compteur'));
+        $compteur = $client->compteur()->update($request->input('compteur'));
+        $compteur->releves()->update($request->input('releve'));
 
         return redirect()->back()->with('message', 'تم التعديل بنجاح');
     }

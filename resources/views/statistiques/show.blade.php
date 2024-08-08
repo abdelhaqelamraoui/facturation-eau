@@ -33,22 +33,27 @@
     <div class="row">
         <div class="col">
             <table class="table table-sm table-bordered caption-top">
-                <caption class="text-end">الفواتير غير المستخلصة</caption>
+                <caption class="text-end text-danger">الفواتير غير المستخلصة</caption>
                 <thead class="table-warning">
                     <tr>
                         <th class="text-center">الرقم</th>
                         <th class="text-center">التاريخ</th>
                         <th class="text-center">الاستهلاك</th>
-                        <th class="text-center">الثمن</th>
+                        <th class="text-center">الثمن (درهم)</th>
+                        <th class="text-center"></th>
+
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($factures as $i => $facture)
                     <tr>
-                        <td class="fw-bold">{{$i}}</td>
+                        <td class="fw-bold">{{$i+1}}</td>
                         <td>{{$facture->date}}</td>
                         <td>{{$facture->volume}}</td>
                         <td>{{$facture->montant}}</td>
+                        <td class="text-center">
+                            <a href="{{ route('factures.show', $facture) }}" class="btn btn-sm btn-outline-info">معاينة</a>
+                        </td>
                     </tr>
 
                     @empty
