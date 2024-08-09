@@ -3,7 +3,6 @@
 
 @section('content')
 <div class="container">
-    <!-- TODO -->
 
     <table class="table table-bordered">
         <thead class="table-success">
@@ -33,7 +32,7 @@
     <div class="row">
         <div class="col">
             <table class="table table-sm table-bordered caption-top">
-                <caption class="text-end text-danger">الفواتير غير المستخلصة</caption>
+                <caption class="text-danger">الفواتير غير المستخلصة</caption>
                 <thead class="table-warning">
                     <tr>
                         <th class="text-center">الرقم</th>
@@ -64,7 +63,7 @@
                 </tbody>
                 <tfoot class="table-warning table-group-divider">
                     <tr>
-                        <th rowspan="2" colspan="2">المجموع</th>
+                        <th rowspan="2" colspan="3">المجموع</th>
                         <th>المستخلصة</th>
                         <th>غير المستخلصة</th>
                     </tr>

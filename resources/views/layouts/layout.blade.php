@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{config('app.name')}}</title>
     <link rel="stylesheet" href="{{ asset('assets/css/global.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.rtl.min.css') }}">
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
 
 </head>
@@ -20,12 +20,18 @@
             </a>
             <ul class="nav nav-pills flex-column mb-auto mt-4">
                 <li class="nav-item">
-                    <a href="{{route('clients.index')}}" class="nav-link active" aria-current="page">
+                    <a href="/" class="nav-link active" aria-current="page">
                         <svg class="bi pe-none me-2" width="16" height="16">
                             <use xlink:href="#home" />
                         </svg>
-                        الزبناء
+                        الرئيسية
                     </a>
+                </li> <a href="{{route('clients.index')}}" class="nav-link active" aria-current="page">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#home" />
+                    </svg>
+                    الزبناء
+                </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('factures.index')}}" class="nav-link active" aria-current="page">
@@ -64,7 +70,10 @@
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">@yield('subtitle')</a>
                     <div>
-                        <button class="btn">{{ explode(' ', now())[0]}}</button>
+                        <div>
+                            <button class="btn ms-2">{{ explode(' ', now())[0]}}</button>
+                            <a href="{{ url()->previous() }}" class="btn btn-primary me-2 px-4">رجوع</a>
+                        </div>
                     </div>
                 </div>
             </header>

@@ -1,28 +1,23 @@
 @extends('layouts.layout')
 @section('subtitle','تعديل زبون')
-
-
 @section('content')
-<div class="container-xl px-4 mt-4" dir="rtl">
+<div class="container">
     <hr class="mt-0 mb-4">
     <div class="row">
         <div class="col-xl-12">
-            <!-- بطاقة تعديل المعلومات -->
             <div class="card mb-4">
-                <div class="card-header">تعديل معلومات العميل</div>
+                <div class="card-header">تعديل معلومات الزبون</div>
                 <div class="card-body">
                     <form action="{{ route('clients.update', $client->id) }}" method="POST">
                         @csrf
                         @method('PUT')
-
-                        <!-- صف النموذج -->
                         <div class="row gx-3 mb-3">
-                            <!-- مجموعة النموذج (الاسم الأول) -->
+
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputFirstName">الاسم الشخصي </label>
                                 <input class="form-control" id="inputFirstName" type="text" name="client[nom]" value="{{ old('client.nom', $client->nom) }}" placeholder="أدخل اسمك الأول">
                             </div>
-                            <!-- مجموعة النموذج (اسم العائلة) -->
+
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputLastName">الاسم العائلي</label>
                                 <input class="form-control" id="inputLastName" type="text" name="client[prenom]" value="{{ old('client.prenom', $client->prenom) }}" placeholder="أدخل اسم عائلتك">
@@ -40,8 +35,6 @@
                                 <input class="form-control" id="inputAdresse" type="text" name="client[adresse]" value="{{ old('client.adresse', $client->adresse) }}" placeholder="أدخل العنوان">
                             </div>
                         </div>
-
-                        <!-- معلومات العداد -->
                         <div class="row gx-3 mb-3">
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputCompteurNumero">رقم العداد</label>
@@ -52,8 +45,6 @@
                                 <input class="form-control" id="inputCompteurValeur" type="text" name="releve[valeur]" value="{{ old('compteur[valeur]', $client->compteur->valeur ?? '') }}" placeholder="أدخل قيمة العداد">
                             </div>
                         </div>
-
-                        <!-- زر حفظ التغييرات -->
                         <button class="btn btn-primary" type="submit">حفظ التعديلات</button>
                     </form>
                 </div>
