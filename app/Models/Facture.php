@@ -11,13 +11,18 @@ class Facture extends Model
 
     protected $fillable = ['client_id', 'compteur_id', 'date', 'montant', 'volume', 'statut'];
 
-    public function client()
-    {
-        return $this->belongsTo(Client::class);
-    }
+  // Facture.php
 
-    public function compteur()
-    {
-        return $this->belongsTo(Compteur::class);
-    }
+public function client()
+{
+    return $this->belongsTo(Client::class);
+}
+
+
+public function compteur()
+{
+    return $this->belongsTo(Compteur::class);
+}
+
+
 }

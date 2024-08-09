@@ -39,7 +39,7 @@ class StatistiquesController extends Controller
             return $facture->statut == 'Non payée';
         });
 
-        return view('statistiques.index', compact('client', 'factures', 'totals'));
+        return view('statistiques.index', compact('factures', 'totals'));
     }
 
     /**

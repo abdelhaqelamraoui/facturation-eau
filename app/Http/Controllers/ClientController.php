@@ -12,7 +12,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::all();
+        $clients = Client::orderByDesc('id')->paginate(10); // TODO: mettre le nombre d'elements dauns une variable
         return view('clients.index', compact('clients'));
     }
 
@@ -29,20 +29,39 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $client = Client::create($request->input('client'));
-        $compteur = $client->compteur()->create($request->input('compteur'));
-        $compteur->releves()->create($request->input('releve'));
+        // dd($request->input('client'));
+        $client = Client::create($request->input('client')); // a fieldset table, ex: name="client[nom]"
+        $client->compteur()->create($request->input('compteur')); // a fieldset table, ex: name="compteur[numero]"
 
         return redirect()->back()->with('message', 'تمت الإضافة بنجاح');
     }
 
+
+
     /**
      * Display the specified resource.
      */
-    public function show(Client $client)
+    // public function show(Client $client)
+    // {
+    //     return view('clients.show', compact('client'));
+    // }
+    // In your Controller
+    public function show($id)
     {
-        return view('clients.show', compact('client'));
+        $client = Client::find($id);
+
+        if ($client) {
+
+            $facture = $client->factures()->latest()->first(); // Fetch the latest facture, or adjust as needed
+
+            return view('clients.show', ['client' => $client, 'facture' => $facture]);
+        } else {
+            return abort(404, 'Client not found');
+        }
     }
+
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -58,7 +77,8 @@ class ClientController extends Controller
     public function update(Request $request, Client $client)
     {
         $client->update($request->input('client'));
-        $client->compteur()->update($request->input('compteur'));
+        $compteur = $client->compteur()->update($request->input('compteur'));
+        $compteur->releves()->update($request->input('releve'));
 
         return redirect()->back()->with('message', 'تم التعديل بنجاح');
     }

@@ -11,11 +11,11 @@ class FactureController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        // TODO : lister tous les facture dans une table
-        $factures = Facture::all();
-        return view('factures.index', compact('factures'));
-    }
+{
+    // $factures = Facture::with(['client','compteur'])->get();
+    $factures = Facture::all();
+    return view('factures.index', compact('factures'));
+}
 
     /**
      * Display the specified resource.
